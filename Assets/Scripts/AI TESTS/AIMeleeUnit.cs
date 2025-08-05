@@ -14,7 +14,7 @@ public class AIMeleeUnit : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
 
-        PlayerLookAtFormation formation = GetComponentInParent<PlayerLookAtFormation>();
+        MeleeFormation formation = GetComponentInParent<MeleeFormation>();
         if (formation != null)
         {
             formation.RegisterUnit(this);
@@ -24,7 +24,6 @@ public class AIMeleeUnit : MonoBehaviour
     private void Update()
     {
         LookAtPlayer();
-        Debug.Log(agent.velocity);
     }
 
     public void SetMeleeFormationSlot(Vector3 position)

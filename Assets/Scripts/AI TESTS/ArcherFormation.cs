@@ -12,27 +12,27 @@ public class ArcherFormation : MonoBehaviour
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private int unitsPerRow = 6;
     [SerializeField] private float spacing = 1.5f;
-    [SerializeField] private bool defensiveStance;
+    [SerializeField] private bool formationLookAtPlayer;
 
     [Header("Units in formations")]
     [HideInInspector] public List<AIArcherUnit> units = new List<AIArcherUnit>();
 
     private void Start()
     {
-        Debug.Log("Number of men in unit: " + units.Count);
+        StartCoroutine(TEST());
     }
 
     private void Update()
     {
-        if (!defensiveStance)
-            RotateFormationToTarget();
+        if (formationLookAtPlayer)
+            FormationRotateToPlayer();
 
-        BeginUnitFormation();
+        Formation();
     }
 
     // Create the unit formations.
     //
-    private void BeginUnitFormation()
+    private void Formation()
     {
         if (formUpTarget == null)
         {
@@ -63,7 +63,7 @@ public class ArcherFormation : MonoBehaviour
 
     // Rotate the formation to look at the target.
     //
-    private void RotateFormationToTarget()
+    private void FormationRotateToPlayer()
     {
         if (unitRotationTarget == null || formUpTarget == null) return;
 
@@ -85,5 +85,11 @@ public class ArcherFormation : MonoBehaviour
     public void UnregisterUnit(AIArcherUnit archerUnit)
     {
         units.Remove(archerUnit);
+    }
+
+    private IEnumerator TEST()
+    {
+        yield return new WaitForSeconds(3f);
+        Debug.Log("Number of men in archer unit: " + units.Count);
     }
 }

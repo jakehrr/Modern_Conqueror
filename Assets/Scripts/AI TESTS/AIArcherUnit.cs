@@ -24,7 +24,6 @@ public class AIArcherUnit : MonoBehaviour
     private void Update()
     {
         LookAtPlayer();
-        Debug.Log(agent.velocity);
     }
 
     public void SetArcherFormationSlot(Vector3 position)

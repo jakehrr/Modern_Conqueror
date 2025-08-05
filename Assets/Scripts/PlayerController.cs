@@ -42,8 +42,6 @@ public class PlayerController : MonoBehaviour
         bool isSprinting = Input.GetKey(KeyCode.LeftShift);
         float speed = isSprinting ? sprintSpeed : walkSpeed;
 
-        print(speed);
-
         Vector3 forward = playerCamera.forward;
         forward.y = 0;
         forward.Normalize();
