@@ -6,8 +6,10 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class AIMeleeUnit : MonoBehaviour
 {
+    // Private Variables
     private NavMeshAgent agent;
     private Vector3 targetSlot;
+
     [SerializeField] private Transform playerTarget;
 
     void Start()
