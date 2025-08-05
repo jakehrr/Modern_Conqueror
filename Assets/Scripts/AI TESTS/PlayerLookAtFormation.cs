@@ -12,6 +12,7 @@ public class PlayerLookAtFormation : MonoBehaviour
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private int unitsPerRow = 6;
     [SerializeField] private float spacing = 1.5f;
+    [SerializeField] private bool defensiveStance;
 
     [Header("Units in formations")]
     [HideInInspector] public List<AIMeleeUnit> units = new List<AIMeleeUnit>();
@@ -23,7 +24,9 @@ public class PlayerLookAtFormation : MonoBehaviour
 
     private void Update()
     {
-        RotateFormationToTarget();
+        if(defensiveStance)
+            RotateFormationToTarget();
+        
         BeginUnitFormation();
     }
 
